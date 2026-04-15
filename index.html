@@ -1461,6 +1461,7 @@
           if (data.success) {
             showStatus('Ačiū! Jūsų užklausa išsiųsta. Susisieksime greitai.', true);
             form.reset();
+            if (fileLabel) { fileLabel.textContent = 'Pridėti failą (iki 1 MB)'; fileLabel.style.color = 'rgba(26,26,26,0.5)'; }
           } else {
             showStatus('Nepavyko išsiųsti. Bandykite dar kartą arba skambinkite.', false);
           }
