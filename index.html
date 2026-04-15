@@ -43,7 +43,7 @@
       --bg-dark: #1a1a1a;
       --text-primary: #1a1a1a;
       --text-muted: #5d3c11;
-      --accent: #b52a11;
+      --accent: #87162a;
       --accent-secondary: #5577a4;
       --text-on-dark: #e8e3dd;
     }
@@ -153,7 +153,7 @@
       position: relative;
     }
     .nav-logo {
-      height: clamp(7.7rem, 14vw, 12.6rem);
+      height: clamp(2rem, 3.5vw, 2.75rem);
       width: auto;
       display: block;
       transition: height 350ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -258,8 +258,8 @@
       border: 2px solid var(--accent);
     }
     .btn-accent:hover {
-      background: #9a2310;
-      border-color: #9a2310;
+      background: #6d1122;
+      border-color: #6d1122;
     }
 
     .btn-outline {
@@ -369,7 +369,7 @@
       <!-- Logo / Wordmark -->
       <div class="nav-logo-wrap">
         <a href="#" class="flex items-center gap-2 cursor-pointer" aria-label="Autoremda — grįžti į pradžią">
-          <img src="assets/LOGO.webp" alt="Autoremda logotipas" class="nav-logo">
+          <img src="assets/logo.png" alt="Autoremda logotipas" class="nav-logo">
         </a>
       </div>
 
@@ -479,13 +479,13 @@
           <div class="w-full lg:w-[38.2%] reveal">
             <div class="grid grid-cols-2 gap-3">
               <div class="aspect-[4/5] overflow-hidden">
-                <img src="assets/workshop1.png" alt="Autoremda dirbtuvės" class="editorial-photo" loading="lazy" style="object-position: center top;">
+                <img src="assets/Workshop1.webp" alt="Autoremda dirbtuvės" class="editorial-photo" loading="lazy" style="object-position: center top;">
               </div>
               <div class="aspect-[4/5] overflow-hidden">
-                <img src="assets/workshop2.png" alt="Remonto darbai" class="editorial-photo" loading="lazy">
+                <img src="assets/Workshop2.webp" alt="Remonto darbai" class="editorial-photo" loading="lazy">
               </div>
               <div class="col-span-2 aspect-[16/9] overflow-hidden">
-                <img src="assets/workshop3.webp" alt="Autoremda komanda" class="editorial-photo" loading="lazy">
+                <img src="assets/Workshop3.webp" alt="Autoremda komanda" class="editorial-photo" loading="lazy">
               </div>
             </div>
           </div>
@@ -493,7 +493,7 @@
           <!-- Right: Text content (61.8%) -->
           <div class="w-full lg:w-[61.8%]">
             <p class="reveal label-style mb-3" style="color: var(--accent);">AUTOREMDA</p>
-            <h2 class="reveal heading-section mb-4 stagger-1" style="color: var(--text-primary);">APIE MUS123</h2>
+            <h2 class="reveal heading-section mb-4 stagger-1" style="color: var(--text-primary);">APIE MUS</h2>
             <div class="reveal stagger-2 w-16 h-[3px] mb-6" style="background: var(--accent);"></div>
             <p class="reveal stagger-2 font-display font-bold text-lg lg:text-xl mb-4" style="color: var(--text-primary);">Kvalifikuoti specialistai su patirtimi</p>
             <p class="reveal stagger-3 font-body font-light text-base mb-8 max-w-[580px]" style="color: var(--text-primary); line-height: 1.8;">
@@ -555,10 +555,11 @@
           <!-- Card 2: Automobilių dažymas -->
           <div class="reveal stagger-2 p-6 sm:p-8 border transition-[border-color] duration-200 hover:border-[var(--accent)]" style="border-color: rgba(181,42,17,0.3); background: var(--bg-elevated);">
             <svg class="mb-5" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/>
-              <path d="M12 11v8"/>
-              <path d="M8 15h8"/>
-              <path d="M10 19h4"/>
+              <rect x="6" y="8" width="12" height="13" rx="2"/>
+              <path d="M9 8V4h6v4"/>
+              <path d="M17 3h3"/>
+              <path d="M17 6h3"/>
+              <circle cx="12" cy="14" r="1.5"/>
             </svg>
             <h3 class="font-display font-bold text-lg mb-2" style="color: var(--text-primary);">Automobilių dažymas</h3>
             <p class="font-body font-light text-sm" style="color: var(--text-muted); line-height: 1.7;">Tikslus dažų parinkimas ir kokybiška dažymo technologija</p>
@@ -587,25 +588,24 @@
             <p class="font-body font-light text-sm" style="color: var(--text-muted); line-height: 1.7;">Suteikiame pakaitinį automobilį arba pasiūlome trumpalaikę nuomą palankiomis sąlygomis.</p>
           </div>
 
-          <!-- Card 5: Važiuoklės remontas -->
+          <!-- Card 5: Dažų maišymas -->
           <div class="reveal stagger-2 p-6 sm:p-8 border transition-[border-color] duration-200 hover:border-[var(--accent)]" style="border-color: rgba(181,42,17,0.3); background: var(--bg-elevated);">
             <svg class="mb-5" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 6V4m0 2a2 2 0 1 0 0 4m0-4a2 2 0 1 1 0 4m-6 8a2 2 0 1 0 0-4m0 4a2 2 0 1 1 0-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 1 0 0-4m0 4a2 2 0 1 1 0-4m0 4v2m0-6V4"/>
+              <path d="M5 8h14l-1 11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 8z"/>
+              <path d="M5 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/>
+              <path d="M9 14c1 1 2 1 3 0s2-1 3 0"/>
             </svg>
-            <h3 class="font-display font-bold text-lg mb-2" style="color: var(--text-primary);">Važiuoklės remontas</h3>
-            <p class="font-body font-light text-sm" style="color: var(--text-muted); line-height: 1.7;">Pakabos, stabdžių sistemų ir transmisijos remontas</p>
+            <h3 class="font-display font-bold text-lg mb-2" style="color: var(--text-primary);">Dažų maišymas</h3>
+            <p class="font-body font-light text-sm" style="color: var(--text-muted); line-height: 1.7;">Tikslus automobilių dažų atspalvių parinkimas ir profesionalus dažų maišymas pagal gamintojo kodą ar individualų poreikį.</p>
           </div>
 
-          <!-- Card 6: Techninė pagalba -->
+          <!-- Card 6: Smulkūs techniniai darbai -->
           <div class="reveal stagger-3 p-6 sm:p-8 border transition-[border-color] duration-200 hover:border-[var(--accent)]" style="border-color: rgba(181,42,17,0.3); background: var(--bg-elevated);">
             <svg class="mb-5" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 3h15v13H1z"/>
-              <path d="M16 8h4l3 3v5h-7V8z"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/>
-              <circle cx="18.5" cy="18.5" r="2.5"/>
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
             </svg>
-            <h3 class="font-display font-bold text-lg mb-2" style="color: var(--text-primary);">Techninė pagalba</h3>
-            <p class="font-body font-light text-sm" style="color: var(--text-muted); line-height: 1.7;">Pagalba kelyje ir transporto priemonės pristatymas</p>
+            <h3 class="font-display font-bold text-lg mb-2" style="color: var(--text-primary);">Smulkūs techniniai darbai</h3>
+            <p class="font-body font-light text-sm" style="color: var(--text-muted); line-height: 1.7;">Atliekame lempučių, akumuliatoriaus, valytuvų, filtrų keitimo bei kitus smulkius automobilio remonto ir priežiūros darbus.</p>
           </div>
         </div>
 
@@ -907,7 +907,7 @@
                 <svg class="flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               </button>
               <div class="accordion-content">
-                <p class="font-body font-light text-sm pb-5" style="color: rgba(232,227,221,0.65); line-height: 1.7;">Taip, esant poreikiui padedame organizuoti pagalbą ir transporto priemonės pristatymą į servisą. Mūsų tikslas — kad po įvykio ar gedimo sprendimas būtų kuo greitesnis ir patogesnis jums.</p>
+                <p class="font-body font-light text-sm pb-5" style="color: rgba(232,227,221,0.65); line-height: 1.7;">Atskiros techninės pagalbos kelyje paslaugos neteikiame. Tačiau ištikus bėdai kelyje, iš anksto susitarus dėl automobilio remonto mūsų dirbtuvėse, galime pasirūpinti jo atvežimu į servisą.</p>
               </div>
             </div>
 
