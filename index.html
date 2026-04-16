@@ -947,9 +947,6 @@
           <div class="w-full lg:w-[38.2%] reveal">
             <h2 class="heading-section mb-4" style="color: var(--text-primary);">RAŠYKITE</h2>
             <div class="w-16 h-[3px] mb-6" style="background: var(--accent);"></div>
-            <p class="font-body font-light text-base" style="color: var(--text-muted); line-height: 1.8;">
-              Atsiųskite įlenkimo nuotrauką ar video ir nustatysime kainą.
-            </p>
 
             <!-- Contact info -->
             <div class="mt-10 space-y-4">
@@ -992,11 +989,11 @@
 
           <!-- Right: Form (61.8%) -->
           <div class="w-full lg:w-[61.8%] reveal stagger-1">
-            <form id="contact-form" class="space-y-5" enctype="multipart/form-data">
-              <input type="hidden" name="access_key" value="4253c384-be4b-4801-84d9-8ae49f9ce062">
-              <input type="hidden" name="subject" value="Nauja užklausa iš Autoremda.lt">
-              <input type="hidden" name="from_name" value="Autoremda.lt">
-              <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
+            <form id="contact-form" class="space-y-5" name="kontaktai" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="kontaktai">
+              <p style="position:absolute;left:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
+                <label>Nepildyti: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+              </p>
               <div>
                 <label for="form-name" class="block font-body font-medium text-xs uppercase tracking-wider mb-2" style="color: var(--text-primary);">Vardas <span style="color: var(--accent);">*</span></label>
                 <input type="text" id="form-name" name="name" required class="w-full px-4 py-3 font-body text-sm bg-transparent border rounded-none transition-[border-color] duration-200" style="border-color: rgba(26,26,26,0.2); color: var(--text-primary);" placeholder="Jūsų vardas">
@@ -1010,18 +1007,6 @@
               <div>
                 <label for="form-comment" class="block font-body font-medium text-xs uppercase tracking-wider mb-2" style="color: var(--text-primary);">Komentaras</label>
                 <textarea id="form-comment" name="comment" rows="4" class="w-full px-4 py-3 font-body text-sm bg-transparent border rounded-none resize-y transition-[border-color] duration-200" style="border-color: rgba(26,26,26,0.2); color: var(--text-primary);" placeholder="Aprašykite situaciją..."></textarea>
-              </div>
-
-              <div>
-                <label class="block font-body font-medium text-xs uppercase tracking-wider mb-2" style="color: var(--text-primary);">Įlenkimo nuotrauka ar video</label>
-                <label for="form-file" class="file-upload-area flex flex-col items-center justify-center py-8 rounded-none cursor-pointer">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(26,26,26,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19"/>
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                  </svg>
-                  <span id="form-file-label" class="font-body text-sm mt-2" style="color: rgba(26,26,26,0.5);">Pridėti failą (iki 1 MB)</span>
-                  <input type="file" id="form-file" name="attachment" accept="image/*,video/*" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0,0,0,0);">
-                </label>
               </div>
 
               <button type="submit" id="form-submit" class="btn btn-accent w-full sm:w-auto">SIŲSTI</button>
@@ -1413,7 +1398,7 @@
       startAutoplay();
     }
 
-    // ── Contact form (Web3Forms) ──
+    // ── Contact form (Netlify Forms) ──
     function initContactForm() {
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
@@ -1426,26 +1411,8 @@
         status.style.color = ok ? '#1a7f3c' : 'var(--accent)';
       };
 
-      const fileInput = document.getElementById('form-file');
-      const fileLabel = document.getElementById('form-file-label');
-      if (fileInput && fileLabel) {
-        fileInput.addEventListener('change', () => {
-          const f = fileInput.files[0];
-          if (!f) { fileLabel.textContent = 'Pridėti failą (iki 1 MB)'; fileLabel.style.color = 'rgba(26,26,26,0.5)'; return; }
-          const sizeMB = (f.size / 1024 / 1024).toFixed(2);
-          if (f.size > 1024 * 1024) {
-            fileLabel.textContent = `${f.name} (${sizeMB} MB — per didelis, max 1 MB)`;
-            fileLabel.style.color = 'var(--accent)';
-          } else {
-            fileLabel.textContent = `${f.name} (${sizeMB} MB)`;
-            fileLabel.style.color = 'var(--text-primary)';
-          }
-        });
-      }
-
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (form.botcheck && form.botcheck.checked) return;
 
         submitBtn.disabled = true;
         const originalLabel = submitBtn.textContent;
@@ -1453,15 +1420,13 @@
         status.classList.add('hidden');
 
         try {
-          const res = await fetch('https://api.web3forms.com/submit', {
+          const res = await fetch('/', {
             method: 'POST',
             body: new FormData(form)
           });
-          const data = await res.json();
-          if (data.success) {
+          if (res.ok) {
             showStatus('Ačiū! Jūsų užklausa išsiųsta. Susisieksime greitai.', true);
             form.reset();
-            if (fileLabel) { fileLabel.textContent = 'Pridėti failą (iki 1 MB)'; fileLabel.style.color = 'rgba(26,26,26,0.5)'; }
           } else {
             showStatus('Nepavyko išsiųsti. Bandykite dar kartą arba skambinkite.', false);
           }
