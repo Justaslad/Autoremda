@@ -364,7 +364,7 @@
   <!-- ════════════════════════════════════════════════════════════
        1. NAVIGATION
        ════════════════════════════════════════════════════════════ -->
-  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-[background-color,box-shadow] duration-300" style="background: transparent;">
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 nav-scrolled transition-[background-color,box-shadow] duration-300">
     <div class="nav-inner max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
       <!-- Logo / Wordmark -->
       <div class="nav-logo-wrap">
@@ -375,11 +375,11 @@
 
       <!-- Desktop Nav Links -->
       <div class="hidden lg:flex items-center" style="gap: clamp(1.25rem, 2vw, 2.5rem);">
-        <a href="#hero" class="nav-link-style text-[var(--text-on-dark)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">Pagrindinis</a>
-        <a href="#apie" class="nav-link-style text-[var(--text-on-dark)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">Apie mus</a>
-        <a href="#paslaugos" class="nav-link-style text-[var(--text-on-dark)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">Paslaugos</a>
-        <a href="#duk" class="nav-link-style text-[var(--text-on-dark)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">DUK</a>
-        <a href="#kontaktai" class="nav-link-style text-[var(--text-on-dark)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">Kontaktai</a>
+        <a href="#hero" class="nav-link-style text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">Pagrindinis</a>
+        <a href="#apie" class="nav-link-style text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">Apie mus</a>
+        <a href="#paslaugos" class="nav-link-style text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">Paslaugos</a>
+        <a href="#duk" class="nav-link-style text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">DUK</a>
+        <a href="#kontaktai" class="nav-link-style text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 cursor-pointer nav-text-link">Kontaktai</a>
       </div>
 
       <!-- CTA Button -->
@@ -387,7 +387,7 @@
 
       <!-- Hamburger -->
       <button id="hamburger-btn" class="lg:hidden cursor-pointer p-2" aria-label="Atidaryti meniu" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="text-[var(--text-on-dark)] hamburger-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="text-[var(--text-primary)] hamburger-icon">
           <line x1="3" y1="6" x2="21" y2="6"/>
           <line x1="3" y1="12" x2="21" y2="12"/>
           <line x1="3" y1="18" x2="21" y2="18"/>
@@ -1171,21 +1171,9 @@
       const navLinks = document.querySelectorAll('.nav-text-link');
       const hamburgerSvg = document.querySelector('#hamburger-btn svg');
 
-      function updateNav() {
-        const scrolled = window.scrollY > 80;
-        if (scrolled) {
-          navbar.classList.add('nav-scrolled');
-          navLinks.forEach(link => { link.style.color = 'var(--text-primary)'; });
-          if (hamburgerSvg) hamburgerSvg.style.stroke = 'var(--text-primary)';
-        } else {
-          navbar.classList.remove('nav-scrolled');
-          navLinks.forEach(link => { link.style.color = 'var(--text-on-dark)'; });
-          if (hamburgerSvg) hamburgerSvg.style.stroke = 'var(--text-on-dark)';
-        }
-      }
-
-      window.addEventListener('scroll', updateNav, { passive: true });
-      updateNav();
+      navbar.classList.add('nav-scrolled');
+      navLinks.forEach(link => { link.style.color = 'var(--text-primary)'; });
+      if (hamburgerSvg) hamburgerSvg.style.stroke = 'var(--text-primary)';
     }
 
     // ── Smooth scroll ──
